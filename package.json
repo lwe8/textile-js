@@ -1,6 +1,6 @@
 {
-  "name": "@lwe8/textile",
-  "version": "0.2.0",
+  "name": "@lwe8/textile-js",
+  "version": "0.2.1",
   "description": "Textile parser",
   "scripts": {
     "build": "tsc"
