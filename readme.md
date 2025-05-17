@@ -1,11 +1,10 @@
 # textile-js
 
-![textile](https://github.com/phothinmg/lwe8-textile-core/blob/main/textile.png)
+![textile](./textile.png)
 
 This code are copied from https://github.com/borgar/textile-js by [Borgar](https://github.com/borgar).
 
 Just add lang attribute to code block.
-
 
 **Textile live web editor : https://borgar.github.io/textile-js/**
 
