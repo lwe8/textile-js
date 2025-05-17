@@ -1,0 +1,33 @@
+{
+  "name": "@lwe8/textile",
+  "version": "0.1.0",
+  "description": "Textile parser",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lwe8/textile-js.git"
+  },
+  "keywords": [],
+  "author": "Pho Thin Maung <phothinmg@disroot.org>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lwe8/textile-js/issues"
+  },
+  "homepage": "https://github.com/lwe8/textile-js#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.18",
+    "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "provenance": true,
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}
