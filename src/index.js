@@ -1015,7 +1015,7 @@ function parsePhrase(src, options) {
 re.pattern.txlisthd = txlisthd;
 re.pattern.txlisthd2 = txlisthd2;
 const reList = re.compile(
-  /^((?:[:txlisthd:][^\n:]*?(?:\r?\n|$))+)(\s*\n|$)/,
+  /^((?:[:txlisthd:][^:\n\r]*(?:\r?\n|$))+)(\s*\n|$)/,
   "s"
 );
 const _reItem = re.compile(/^([#*]+)([^\n]+?)(\n(?=[:txlisthd2:])|$)/, "s");
