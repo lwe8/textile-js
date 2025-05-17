@@ -38,6 +38,8 @@ import { TextileJs } from "@lwe8/textile";
 
 const text = 'bc(foo bar *js #biz). console.log("Hello World")';
 
+const textile = new TextileJs();
+
 // text to html
 const html = textile.parse(text);
 // text to jsonml
