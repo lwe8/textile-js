@@ -28,13 +28,13 @@ bc(foo bar *js #biz). console.log("Hello World")
 ## Install
 
 ```bash
-npm i lwe8-textile-core
+npm i @lwe8/textile
 ```
 
 ## Use
 
 ```js
-import { textile } from "lwe8-textile-core";
+import { TextileJs } from "@lwe8/textile";
 
 const text = 'bc(foo bar *js #biz). console.log("Hello World")';
 
