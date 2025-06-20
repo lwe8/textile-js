@@ -1,9 +1,10 @@
 {
   "name": "@lwe8/textile-js",
   "version": "0.2.1",
-  "description": "Textile parser",
+  "description": "Textile parser for JavaScript",
   "scripts": {
-    "build": "tsc"
+    "build": "parcel build",
+    "cjs": "tsc --build ./tsconfig.cjs.json"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/lwe8/textile-js#readme",
   "devDependencies": {
     "@types/node": "^22.15.18",
+    "shiki": "^3.6.0",
     "typescript": "^5.8.3"
   },
   "publishConfig": {
@@ -29,5 +31,8 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
+  },
+  "dependencies": {
+    "textile-js": "^2.1.1"
   }
 }
