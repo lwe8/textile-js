@@ -67,74 +67,108 @@ function $a42d20654869d369$export$2e2bcd8739ae039(feed) {
  ** This provides the `re` object, which contains several helper
  ** methods for working with big regular expressions (soup).
  **
- */ const $1d282c06949d5561$var$_cache = {};
-const $1d282c06949d5561$var$re = {
-    pattern: {
-        punct: "[!-/:-@\\[\\\\\\]-`{-~]",
-        space: "\\s"
-    },
-    escape: function(src) {
-        return src.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-    },
-    collapse: function(src) {
-        return src.replace(/(?:#.*?(?:\n|$))/g, "").replace(/\s+/g, "");
-    },
-    expandPatterns: function(src) {
-        // TODO: provide escape for patterns: \[:pattern:] ?
-        return src.replace(/\[:\s*(\w+)\s*:\]/g, function(m, k) {
-            const ex = $1d282c06949d5561$var$re.pattern[k];
-            if (ex) return $1d282c06949d5561$var$re.expandPatterns(ex);
-            else throw new Error("Pattern " + m + " not found in " + src);
-        });
-    },
-    isRegExp: function(r) {
-        return Object.prototype.toString.call(r) === "[object RegExp]";
-    },
-    compile: function(src, flags) {
-        if ($1d282c06949d5561$var$re.isRegExp(src)) {
-            if (arguments.length === 1) // no flags arg provided, use the RegExp one
-            flags = (src.global ? "g" : "") + (src.ignoreCase ? "i" : "") + (src.multiline ? "m" : "");
-            src = src.source;
-        }
-        // don't do the same thing twice
-        const ckey = src + (flags || "");
-        if (ckey in $1d282c06949d5561$var$_cache) return $1d282c06949d5561$var$_cache[ckey];
-        // allow classes
-        let rx = $1d282c06949d5561$var$re.expandPatterns(src);
-        // allow verbose expressions
-        if (flags && /x/.test(flags)) rx = $1d282c06949d5561$var$re.collapse(rx);
-        // allow dotall expressions
-        if (flags && /s/.test(flags)) rx = rx.replace(/([^\\])\./g, "$1[^\\0]");
-        // TODO: test if MSIE and add replace \s with [\s\u00a0] if it is?
-        // clean flags and output new regexp
-        flags = (flags || "").replace(/[^gim]/g, "");
-        return $1d282c06949d5561$var$_cache[ckey] = new RegExp(rx, flags);
+ */
+const re = {
+  pattern: {
+    punct: "[!-/:-@\\[\\\\\\]-`{-~]",
+    space: "\\s",
+  },
+
+  escape: function (src) {
+    return src.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+  },
+
+  collapse: function (src) {
+    return src.replace(/(?:#.*?(?:\n|$))/g, "").replace(/\s+/g, "");
+  },
+
+  expandPatterns: function (src) {
+    // TODO: provide escape for patterns: \[:pattern:] ?
+    return src.replace(/\[:\s*(\w+)\s*:\]/g, function (m, k) {
+      const ex = re.pattern[k];
+      if (ex) {
+        return re.expandPatterns(ex);
+      } else {
+        throw new Error("Pattern " + m + " not found in " + src);
+      }
+    });
+  },
+
+  isRegExp: function (r) {
+    return Object.prototype.toString.call(r) === "[object RegExp]";
+  },
+
+  compile: function (src, flags) {
+    if (re.isRegExp(src)) {
+      if (arguments.length === 1) {
+        // no flags arg provided, use the RegExp one
+        flags =
+          (src.global ? "g" : "") +
+          (src.ignoreCase ? "i" : "") +
+          (src.multiline ? "m" : "");
+      }
+      src = src.source;
     }
+    // don't do the same thing twice
+    const ckey = src + (flags || "");
+    if (ckey in _cache) {
+      return _cache[ckey];
+    }
+    // allow classes
+    let rx = re.expandPatterns(src);
+    // allow verbose expressions
+    if (flags && /x/.test(flags)) {
+      rx = re.collapse(rx);
+    }
+    // allow dotall expressions
+    if (flags && /s/.test(flags)) {
+      rx = rx.replace(/([^\\])\./g, "$1[^\\0]");
+    }
+    // TODO: test if MSIE and add replace \s with [\s\u00a0] if it is?
+    // clean flags and output new regexp
+    flags = (flags || "").replace(/[^gim]/g, "");
+    return (_cache[ckey] = new RegExp(rx, flags));
+  },
 };
-var $1d282c06949d5561$export$2e2bcd8739ae039 = $1d282c06949d5561$var$re;
+// merge.js
+// merge object b properties into object a
+function merge(a, b) {
+  if (b) {
+    for (const k in b) {
+      a[k] = b[k];
+    }
+  }
+  return a;
+}
 
+// html.js
+re.pattern.html_id = "[a-zA-Z][a-zA-Z\\d:]*";
+re.pattern.html_attr = "(?:\"[^\"]+\"|'[^']+'|[^>\\s]+)";
 
-(0, $1d282c06949d5561$export$2e2bcd8739ae039).pattern.html_id = "[a-zA-Z][a-zA-Z\\d:]*";
-(0, $1d282c06949d5561$export$2e2bcd8739ae039).pattern.html_attr = "(?:\"[^\"]+\"|'[^']+'|[^>\\s]+)";
-const $a37e21e51a445407$var$reAttr = (0, $1d282c06949d5561$export$2e2bcd8739ae039).compile(/^\s*([^=\s]+)(?:\s*=\s*("[^"]+"|'[^']+'|[^>\s]+))?/);
-const $a37e21e51a445407$var$reComment = (0, $1d282c06949d5561$export$2e2bcd8739ae039).compile(/^<!--(.+?)-->/, "s");
-const $a37e21e51a445407$var$reEndTag = (0, $1d282c06949d5561$export$2e2bcd8739ae039).compile(/^<\/([:html_id:])([^>]*)>/);
-const $a37e21e51a445407$var$reTag = (0, $1d282c06949d5561$export$2e2bcd8739ae039).compile(/^<([:html_id:])((?:\s[^=\s/]+(?:\s*=\s*[:html_attr:])?)+)?\s*(\/?)>/);
-const $a37e21e51a445407$var$reHtmlTagBlock = (0, $1d282c06949d5561$export$2e2bcd8739ae039).compile(/^\s*<([:html_id:](?::[a-zA-Z\d]+)*)((?:\s[^=\s/]+(?:\s*=\s*[:html_attr:])?)+)?\s*(\/?)>/);
-const $a37e21e51a445407$export$d8d37edd8cf36f83 = {
-    area: 1,
-    base: 1,
-    br: 1,
-    col: 1,
-    embed: 1,
-    hr: 1,
-    img: 1,
-    input: 1,
-    link: 1,
-    meta: 1,
-    option: 1,
-    param: 1,
-    wbr: 1
+const reAttr = re.compile(/^\s*([^=\s]+)(?:\s*=\s*("[^"]+"|'[^']+'|[^>\s]+))?/);
+const reComment = re.compile(/^<!--(.+?)-->/, "s");
+const reEndTag = re.compile(/^<\/([:html_id:])([^>]*)>/);
+const reTag = re.compile(
+  /^<([:html_id:])((?:\s[^=\s/]+(?:\s*=\s*[:html_attr:])?)+)?\s*(\/?)>/
+);
+const reHtmlTagBlock = re.compile(
+  /^\s*<([:html_id:](?::[a-zA-Z\d]+)*)((?:\s[^=\s/]+(?:\s*=\s*[:html_attr:])?)+)?\s*(\/?)>/
+);
+
+const singletons = {
+  area: 1,
+  base: 1,
+  br: 1,
+  col: 1,
+  embed: 1,
+  hr: 1,
+  img: 1,
+  input: 1,
+  link: 1,
+  meta: 1,
+  option: 1,
+  param: 1,
+  wbr: 1,
 };
 function $a37e21e51a445407$export$6e264830d08f3393(src) {
     return $a37e21e51a445407$var$reComment.exec(src);
