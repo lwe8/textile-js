@@ -823,7 +823,7 @@ function $c1da35ae23756c5b$export$2e2bcd8739ae039(src, options) {
 
 (0, $1d282c06949d5561$export$2e2bcd8739ae039).pattern.txlisthd = (0, $3122b7c8007103ff$export$b94e33ed5e186b4a);
 (0, $1d282c06949d5561$export$2e2bcd8739ae039).pattern.txlisthd2 = (0, $3122b7c8007103ff$export$a3a66bd9ba3a98b6);
-const $2651df716b8fd793$var$reList = (0, $1d282c06949d5561$export$2e2bcd8739ae039).compile(/^((?:[:txlisthd:][^\0]*?(?:\r?\n|$))+)(\s*\n|$)/, "s");
+const $2651df716b8fd793$var$reList = (0, $1d282c06949d5561$export$2e2bcd8739ae039).compile(/^((?:[:txlisthd:][^\0\r\n]*(?:\r?\n|$))+)(\s*\n|$)/, "s");
 const $2651df716b8fd793$var$reItem = (0, $1d282c06949d5561$export$2e2bcd8739ae039).compile(/^([#*]+)([^\0]+?)(\n(?=[:txlisthd2:])|$)/, "s");
 function $2651df716b8fd793$var$listPad(n) {
     let s = "\n";
