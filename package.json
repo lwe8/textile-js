@@ -3,14 +3,15 @@
   "version": "0.2.1",
   "description": "Textile parser for JavaScript",
   "scripts": {
-    "build": "parcel build",
-    "cjs": "tsc --build ./tsconfig.cjs.json"
+    "build": "tsc --build --clean && tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lwe8/textile-js.git"
   },
-  "keywords": [],
+  "keywords": [
+    "Textile"
+  ],
   "author": "Pho Thin Maung <phothinmg@disroot.org>",
   "license": "Apache-2.0",
   "bugs": {
@@ -18,8 +19,8 @@
   },
   "homepage": "https://github.com/lwe8/textile-js#readme",
   "devDependencies": {
+    "@lwe8/text-types": "^1.1.0",
     "@types/node": "^22.15.18",
-    "shiki": "^3.6.0",
     "typescript": "^5.8.3"
   },
   "publishConfig": {
@@ -32,7 +33,5 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "dependencies": {
-    "textile-js": "^2.1.1"
-  }
+  "type": "module"
 }
