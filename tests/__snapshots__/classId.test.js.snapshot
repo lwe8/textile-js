@@ -1,0 +1,63 @@
+exports[`Class ID Attributes Tests > If #id more than one, the first one will return 1`] = `
+{
+  "text": "h1(foo #id1 class #id2). Hello World",
+  "result": "<h1 class=\\"foo class\\" id=\\"id1\\">Hello World</h1>",
+  "expected": "<h1 class=\\"foo class\\" id=\\"id1\\">Hello World</h1>"
+}
+`;
+
+exports[`Class ID Attributes Tests > More than one space between class and id 1`] = `
+{
+  "text": "h1( foo   #id   class). Hello World",
+  "result": "<h1 class=\\"foo class\\" id=\\"id\\">Hello World</h1>",
+  "expected": "<h1 class=\\"foo class\\" id=\\"id\\">Hello World</h1>"
+}
+`;
+
+exports[`Class ID Attributes Tests > Original style attributes 1`] = `
+{
+  "text": "h1(class#id). Hello World",
+  "result": "<h1 class=\\"class\\" id=\\"id\\">Hello World</h1>",
+  "expected": "<h1 class=\\"class\\" id=\\"id\\">Hello World</h1>"
+}
+`;
+
+exports[`Class ID Attributes Tests > Original style attributes option 2 1`] = `
+{
+  "text": "h1(class foo #id). Hello World",
+  "result": "<h1 class=\\"class foo\\" id=\\"id\\">Hello World</h1>",
+  "expected": "<h1 class=\\"class foo\\" id=\\"id\\">Hello World</h1>"
+}
+`;
+
+exports[`Class ID Attributes Tests > Place id(#id) any place 1`] = `
+{
+  "text": "h1(#id class). Hello World",
+  "result": "<h1 id=\\"id\\" class=\\"class\\">Hello World</h1>",
+  "expected": "<h1 id=\\"id\\" class=\\"class\\">Hello World</h1>"
+}
+`;
+
+exports[`Class ID Attributes Tests > Place id(#id) any place,option 2 1`] = `
+{
+  "text": "h1(foo #id class). Hello World",
+  "result": "<h1 class=\\"foo class\\" id=\\"id\\">Hello World</h1>",
+  "expected": "<h1 class=\\"foo class\\" id=\\"id\\">Hello World</h1>"
+}
+`;
+
+exports[`Class ID Attributes Tests > When using \`*\` in \`bc\` elements , return as language for syntax highlight 1`] = `
+{
+  "text": "bc(*js #id). console.log(\\"Hello World\\")",
+  "result": "<pre class=\\"language-js\\" id=\\"id\\"><code class=\\"language-js\\">console.log(\\"Hello World\\")</code></pre>",
+  "expected": "<pre class=\\"language-js\\" id=\\"id\\"><code class=\\"language-js\\">console.log(\\"Hello World\\")</code></pre>"
+}
+`;
+
+exports[`Class ID Attributes Tests > When using \`*\` in none \`bc\` elements , return itself as class 1`] = `
+{
+  "text": "h1(*js #id class). Hello World",
+  "result": "<h1 class=\\"*js class\\" id=\\"id\\">Hello World</h1>",
+  "expected": "<h1 class=\\"*js class\\" id=\\"id\\">Hello World</h1>"
+}
+`;

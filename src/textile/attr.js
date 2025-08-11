@@ -69,10 +69,10 @@ function testBlock(name) {
   out there in the real world. So this attempts to emulate the other libraries.
 */
 /**
- * 
- * @param {string} input 
- * @param {import("./types.js").TagName} element 
- * @param {string} [endToken] 
+ *
+ * @param {string} input
+ * @param {import("./types.js").TagName} element
+ * @param {string} [endToken]
  */
 function parseAttr(input, element, endToken) {
   input = String(input);
@@ -131,13 +131,15 @@ function parseAttr(input, element, endToken) {
          */
         const bits = m[1].split(/\s+/);
         // textile syntax extension for class and id attributes
-        // Instead of spliting by "#",split with one or more space
+        // Instead of spiting by "#",split with one or more space
         // Extended by @phothinmg
+        // Test file can found at `./tests/classid.test.js`,
+        // Snapshots can found at `./tests/_snapshots_/classid.test.js.snapshot`
         /** @type {string[]} */
         let lang = [];
         for (const bit of bits) {
           if (bit.startsWith("*")) {
-            // to prevent multi language take only first 
+            // to prevent multi language take only first
             if (lang.length === 0) {
               lang.push(bit.slice(1));
             }
@@ -165,12 +167,6 @@ function parseAttr(input, element, endToken) {
             o.class = o.class ? `${o.class} ${bit}` : bit;
           }
         }
-        // if (bits[0]) {
-        //   o.class = bits[0];
-        // }
-        // if (bits[1]) {
-        //   o.id = bits[1];
-        // }
         remaining = rm;
       }
       continue;

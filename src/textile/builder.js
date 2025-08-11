@@ -1,9 +1,12 @@
 /**
  *
+ * @typedef {keyof HTMLElementTagNameMap} HTMLTagName
  *
- * @typedef {import("./types.js").TagName} TagName
+ * @typedef {"###" | "notextile" | "!" | "bc" | "bq"} TextileTagName
  *
- *  @typedef {[TagName]} ENzero
+ * @typedef {HTMLTagName|TextileTagName} TagName
+ *
+ * @typedef {[TagName]} ENzero
  *
  * @typedef {Record<string,any>}  JsonMLAttributes
  *
@@ -23,7 +26,6 @@
  *
  *
  * @param {any}initArr
- * @returns
  */
 
 export default function builder(initArr) {

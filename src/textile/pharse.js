@@ -1,3 +1,4 @@
+// cSpell:disable
 import re from "./re.js";
 import ribbon from "./ribbon.js";
 import builder from "./builder.js";
@@ -13,6 +14,7 @@ import {
   testOpenTag,
 } from "./html.js";
 import { ucaps, txattr, txcite } from "./re_ext.js";
+import genFnId from "./generateFnId.js";
 
 re.pattern.txattr = txattr;
 re.pattern.txcite = txcite;
@@ -195,10 +197,10 @@ export default function parsePhrase(src, options) {
       src.advance(m[0]);
       list.add([
         "sup",
-        { class: "footnote", id: "fnr" + m[1] },
+        { class: "footnote", id: `fnr${genFnId(m[1])}-${m[1]}` },
         m[2] === "!"
           ? m[1] // "!" suppresses the link
-          : ["a", { href: "#fn" + m[1] }, m[1]],
+          : ["a", { href: `#fn${genFnId(m[1])}-${m[1]}` }, m[1]],
       ]);
       continue;
     }

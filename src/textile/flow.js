@@ -1,3 +1,4 @@
+// cSpell:disable
 import re from "./re.js";
 import ribbon from "./ribbon.js";
 import fixlinks from "./fixlinks.js";
@@ -15,6 +16,7 @@ import { testList, parseList } from "./list.js";
 import { testTable, parseTable } from "./table.js";
 import { txblocks, txlisthd, txattr } from "./re_ext.js";
 import builder from "./builder.js";
+import genFnId from "./generateFnId.js";
 
 re.pattern.txblocks = txblocks;
 re.pattern.txlisthd = txlisthd;
@@ -139,9 +141,6 @@ function paragraph(s, tag, pba, linebreak, options) {
 }
 
 /**
- *
- *
- *
  * @param {string} src
  * @param {{breaks?:boolean}} [option]
  */
@@ -240,12 +239,13 @@ export default function parseFlow(src, option) {
             pba = {};
           }
           pba.class = (pba.class ? pba.class + " " : "") + "footnote";
-          pba.id = "fn" + fnid;
+          //pba.id = "fn" + fnid;
+          pba.id = `fn${genFnId(fnid)}-${fnid}`;
           list.add(
             [
               "p",
               pba,
-              ["a", { href: "#fnr" + fnid }, ["sup", fnid]],
+              ["a", { href: `#fnr${genFnId(fnid)}-${fnid}` }, ["sup", fnid]],
               " ",
             ].concat(parsePhrase(m[1], options))
           );
