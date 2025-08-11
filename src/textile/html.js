@@ -5,7 +5,7 @@ re.pattern.html_id = "[a-zA-Z][a-zA-Z\\d:]*";
 re.pattern.html_attr = "(?:\"[^\"]+\"|'[^']+'|[^>\\s]+)";
 
 const reAttr = re.compile(/^\s*([^=\s]+)(?:\s*=\s*("[^"]+"|'[^']+'|[^>\s]+))?/);
-const reComment = re.compile(/^<!--(.+?)-->/, "s");
+const reComment = re.compile(/^<!--([\s\S]*?)-->/);
 const reEndTag = re.compile(/^<\/([:html_id:])([^>]*)>/);
 const reTag = re.compile(
   /^<([:html_id:])((?:\s[^=\s/]+(?:\s*=\s*[:html_attr:])?)+)?\s*(\/?)>/
