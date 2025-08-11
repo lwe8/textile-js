@@ -8,7 +8,7 @@ import { txlisthd, txlisthd2 } from "./re_ext.js";
 re.pattern.txlisthd = txlisthd;
 re.pattern.txlisthd2 = txlisthd2;
 const reList = re.compile(
-  /^((?:[:txlisthd:][^\0]*?(?:\r?\n|$))+)(\s*\n|$)/,
+  /^((?:[:txlisthd:][^\0:\r\n]*?(?:\r?\n|$))+)(\s*\n|$)/,
   "s"
 );
 const reItem = re.compile(/^([#*]+)([^\0]+?)(\n(?=[:txlisthd2:])|$)/, "s");
