@@ -1522,7 +1522,7 @@ Prism.languages.makefile = {
 })(Prism);
 !(function (t) {
   var n = t.util.clone(t.languages.javascript),
-    e = "(?:\\{<S>*\\.{3}(?:[^{}]|<BRACES>)*\\})";
+    e = "(?:\\{<S>*\\.{3}(?:(<BRACES>)|[^{}])*\\})";
   function a(t, n) {
     return (
       (t = t
