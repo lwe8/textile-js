@@ -1,0 +1,25 @@
+{
+  "name": "@lwe8/textile",
+  "version": "1.0.0",
+  "description": "A full-featured JavaScript Textile parser",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lwe8/textile-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lwe8/textile-js/issues"
+  },
+  "homepage": "https://github.com/lwe8/textile-js#readme",
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "typescript": "^5.9.2"
+  }
+}
