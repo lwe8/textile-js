@@ -11,8 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/lwe8/textile-js.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "textile",
+    "textile-js",
+    "textile markup"
+  ],
+  "author": "Pho Thin Mg <phothinmg@disroot.org>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/lwe8/textile-js/issues"
@@ -30,5 +34,26 @@
   },
   "dependencies": {
     "@lwe8/dts": "^0.2.1"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.js",
+  "jsdelivr": "./dist/textile.min.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   }
 }
