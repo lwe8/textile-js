@@ -1,6 +1,6 @@
 /**
  *
- * @param {import("./builder.js").JsonMLNode[]} ml
+ * @param {import("../index.js").JsonMLNode[]} ml
  * @param {{ [x: string]: any }} dict
  * @returns
  */

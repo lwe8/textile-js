@@ -1,35 +1,5 @@
-/**
- *
- * @typedef {keyof HTMLElementTagNameMap} HTMLTagName
- *
- * @typedef {"###" | "notextile" | "!" | "bc" | "bq"} TextileTagName
- *
- * @typedef {HTMLTagName|TextileTagName} TagName
- *
- * @typedef {[TagName]} ENzero
- *
- * @typedef {Record<string,any>}  JsonMLAttributes
- *
- * @typedef {[TagName,JsonMLAttributes | string]} ENone
- *
- * @typedef {[TagName,JsonMLAttributes | string,string]} ENtwo
- *
- * @typedef {[TagName,JsonMLAttributes | string|ENtwo]} ENthree
- *
- * @typedef {[TagName,JsonMLAttributes | string|ENthree|string]} ENfour
- *
- * @typedef {ENzero|ENone|ENtwo|ENthree|ENfour}  ENfive
- *
- * @typedef {ENfive | [TagName,...ENfive]} JsonMLElement
- *
- * @typedef {JsonMLElement | string} JsonMLNode
- *
- *
- * @param {any}initArr
- */
-
 export default function builder(initArr) {
-  /** @type {JsonMLNode[]} */
+  /** @type {import("../index.js").JsonMLNode[]} */
   const arr = Array.isArray(initArr) ? initArr : [];
 
   return {
@@ -50,7 +20,7 @@ export default function builder(initArr) {
     },
     /**
      *
-     * @param {JsonMLNode[]} arr
+     * @param {import("../index.js").JsonMLNode[]} arr
      */
     merge: function (arr) {
       for (let i = 0, l = arr.length; i < l; i++) {

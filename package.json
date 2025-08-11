@@ -1,11 +1,11 @@
 {
   "name": "@lwe8/textile",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A full-featured JavaScript Textile parser",
-  "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=tests/lcov.info --test-update-snapshots"
+    "test": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=tests/lcov.info --test-update-snapshots",
+    "build": "node build/index.js"
   },
   "repository": {
     "type": "git",
@@ -13,13 +13,22 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/lwe8/textile-js/issues"
   },
   "homepage": "https://github.com/lwe8/textile-js#readme",
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
     "@types/node": "^24.2.1",
+    "rollup": "^4.46.2",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@lwe8/dts": "^0.2.1"
   }
 }

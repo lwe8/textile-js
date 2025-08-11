@@ -1,5 +1,5 @@
 import { describe, it, snapshot } from "node:test";
-import textile from "../src/index.js";
+import { textile } from "../src/index.js";
 import path from "node:path";
 
 // snapshot dir path
